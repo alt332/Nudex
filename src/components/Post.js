@@ -10,11 +10,14 @@ import ImageView from './ImageView';
 import VideoView from './VideoView';
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'rgb(19, 19, 21)',
+  },
   postTitle: {
     paddingHorizontal: 20,
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#000000',
+    color: 'rgb(214, 214, 216)',
     marginVertical: 10,
   },
   bottomActionBar: {
@@ -35,7 +38,7 @@ const kFormatter = (num) => {
 const Post = ({data: post}) => {
   if (post.preview) {
     return (
-      <View style={{backgroundColor: '#FFFFFF'}}>
+      <View style={styles.container}>
         <Text style={styles.postTitle}>{post.title}</Text>
 
         {post.preview.reddit_video_preview ? (
@@ -46,8 +49,8 @@ const Post = ({data: post}) => {
 
         <View style={styles.bottomActionBar}>
           <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
-            <EntypoIcon name="arrow-up" size={20} color="rgb(138, 138, 138)" />
-            <Text style={{color: 'rgb(138, 138, 138)', fontSize: 16}}>
+            <EntypoIcon name="arrow-up" size={20} color="rgb(87, 88, 90)" />
+            <Text style={{color: 'rgb(87, 88, 90)', fontSize: 16}}>
               {kFormatter(post.ups)}
             </Text>
           </View>
@@ -68,8 +71,8 @@ const Post = ({data: post}) => {
                 alignItems: 'center',
                 justifyContent: 'flex-end',
               }}>
-              <FeatherIcon name="share" size={18} color="rgb(138, 138, 138)" />
-              <Text style={{color: 'rgb(138, 138, 138)'}}> Share</Text>
+              <FeatherIcon name="share" size={18} color="rgb(87, 88, 90)" />
+              <Text style={{color: 'rgb(87, 88, 90)'}}> Share</Text>
             </View>
           </TouchableWithoutFeedback>
 

@@ -16,6 +16,22 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* NudexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* NudexTests.m */; };
+		4A833A63247280480048C90F /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A52247280480048C90F /* Fontisto.ttf */; };
+		4A833A65247280480048C90F /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A53247280480048C90F /* Octicons.ttf */; };
+		4A833A67247280480048C90F /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A54247280480048C90F /* Feather.ttf */; };
+		4A833A69247280480048C90F /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A55247280480048C90F /* Entypo.ttf */; };
+		4A833A6B247280480048C90F /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A56247280480048C90F /* FontAwesome5_Brands.ttf */; };
+		4A833A6D247280480048C90F /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A57247280480048C90F /* MaterialCommunityIcons.ttf */; };
+		4A833A6F247280480048C90F /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A58247280480048C90F /* AntDesign.ttf */; };
+		4A833A71247280480048C90F /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A59247280480048C90F /* Foundation.ttf */; };
+		4A833A73247280480048C90F /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A5A247280480048C90F /* Ionicons.ttf */; };
+		4A833A75247280480048C90F /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A5B247280480048C90F /* FontAwesome5_Solid.ttf */; };
+		4A833A77247280480048C90F /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A5C247280480048C90F /* FontAwesome5_Regular.ttf */; };
+		4A833A79247280480048C90F /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A5D247280480048C90F /* FontAwesome.ttf */; };
+		4A833A7B247280480048C90F /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A5E247280480048C90F /* Zocial.ttf */; };
+		4A833A7D247280480048C90F /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A5F247280480048C90F /* EvilIcons.ttf */; };
+		4A833A7F247280480048C90F /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A60247280480048C90F /* SimpleLineIcons.ttf */; };
+		4A833A81247280480048C90F /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A833A61247280480048C90F /* MaterialIcons.ttf */; };
 		4F28F2DCA1A7824D897EB190 /* libPods-Nudex-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC091AB655CB67848FBA34EA /* libPods-Nudex-tvOS.a */; };
 		A42C3CEDF1F402D6BE46B587 /* libPods-Nudex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5361B2B02D1B1A40258CE8 /* libPods-Nudex.a */; };
 		F1C1C6C4ACB73090BC3684FB /* libPods-Nudex-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C93E336B224B97C96ABE66C /* libPods-Nudex-tvOSTests.a */; };
@@ -54,6 +70,22 @@
 		2D02E47B1E0B4A5D006451C7 /* Nudex-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nudex-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Nudex-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Nudex-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F5361B2B02D1B1A40258CE8 /* libPods-Nudex.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Nudex.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A833A52247280480048C90F /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
+		4A833A53247280480048C90F /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
+		4A833A54247280480048C90F /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
+		4A833A55247280480048C90F /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
+		4A833A56247280480048C90F /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Brands.ttf; sourceTree = "<group>"; };
+		4A833A57247280480048C90F /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
+		4A833A58247280480048C90F /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
+		4A833A59247280480048C90F /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Foundation.ttf; sourceTree = "<group>"; };
+		4A833A5A247280480048C90F /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
+		4A833A5B247280480048C90F /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Solid.ttf; sourceTree = "<group>"; };
+		4A833A5C247280480048C90F /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
+		4A833A5D247280480048C90F /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		4A833A5E247280480048C90F /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
+		4A833A5F247280480048C90F /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
+		4A833A60247280480048C90F /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
+		4A833A61247280480048C90F /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		4E434DE23A6F9C2CA6FBF341 /* Pods-Nudex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nudex.debug.xcconfig"; path = "Target Support Files/Pods-Nudex/Pods-Nudex.debug.xcconfig"; sourceTree = "<group>"; };
 		52B2CF79E89A42492D1E650F /* Pods-Nudex-NudexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nudex-NudexTests.release.xcconfig"; path = "Target Support Files/Pods-Nudex-NudexTests/Pods-Nudex-NudexTests.release.xcconfig"; sourceTree = "<group>"; };
 		5957AB2418DCF0F2D9F1AF22 /* Pods-Nudex-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nudex-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Nudex-tvOSTests/Pods-Nudex-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +181,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4A833A51247280480048C90F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4A833A52247280480048C90F /* Fontisto.ttf */,
+				4A833A53247280480048C90F /* Octicons.ttf */,
+				4A833A54247280480048C90F /* Feather.ttf */,
+				4A833A55247280480048C90F /* Entypo.ttf */,
+				4A833A56247280480048C90F /* FontAwesome5_Brands.ttf */,
+				4A833A57247280480048C90F /* MaterialCommunityIcons.ttf */,
+				4A833A58247280480048C90F /* AntDesign.ttf */,
+				4A833A59247280480048C90F /* Foundation.ttf */,
+				4A833A5A247280480048C90F /* Ionicons.ttf */,
+				4A833A5B247280480048C90F /* FontAwesome5_Solid.ttf */,
+				4A833A5C247280480048C90F /* FontAwesome5_Regular.ttf */,
+				4A833A5D247280480048C90F /* FontAwesome.ttf */,
+				4A833A5E247280480048C90F /* Zocial.ttf */,
+				4A833A5F247280480048C90F /* EvilIcons.ttf */,
+				4A833A60247280480048C90F /* SimpleLineIcons.ttf */,
+				4A833A61247280480048C90F /* MaterialIcons.ttf */,
+			);
+			name = Fonts;
+			path = "../node_modules/react-native-vector-icons/Fonts";
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +215,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				4A833A51247280480048C90F /* Fonts */,
 				13B07FAE1A68108700A75B9A /* Nudex */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* NudexTests */,
@@ -194,7 +251,6 @@
 				5957AB2418DCF0F2D9F1AF22 /* Pods-Nudex-tvOSTests.debug.xcconfig */,
 				8F7DCACCE0EA30CFEC2CD233 /* Pods-Nudex-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -291,9 +347,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 2X2PW54287;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 2X2PW54287;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -333,6 +391,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A833A65247280480048C90F /* Octicons.ttf in Resources */,
+				4A833A71247280480048C90F /* Foundation.ttf in Resources */,
+				4A833A7F247280480048C90F /* SimpleLineIcons.ttf in Resources */,
+				4A833A73247280480048C90F /* Ionicons.ttf in Resources */,
+				4A833A7D247280480048C90F /* EvilIcons.ttf in Resources */,
+				4A833A77247280480048C90F /* FontAwesome5_Regular.ttf in Resources */,
+				4A833A7B247280480048C90F /* Zocial.ttf in Resources */,
+				4A833A69247280480048C90F /* Entypo.ttf in Resources */,
+				4A833A81247280480048C90F /* MaterialIcons.ttf in Resources */,
+				4A833A6F247280480048C90F /* AntDesign.ttf in Resources */,
+				4A833A75247280480048C90F /* FontAwesome5_Solid.ttf in Resources */,
+				4A833A63247280480048C90F /* Fontisto.ttf in Resources */,
+				4A833A67247280480048C90F /* Feather.ttf in Resources */,
+				4A833A6D247280480048C90F /* MaterialCommunityIcons.ttf in Resources */,
+				4A833A6B247280480048C90F /* FontAwesome5_Brands.ttf in Resources */,
+				4A833A79247280480048C90F /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,6 +757,7 @@
 			baseConfigurationReference = 8818377EC61F7AD0ED804DAE /* Pods-Nudex-NudexTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 2X2PW54287;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -707,6 +782,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 2X2PW54287;
 				INFOPLIST_FILE = NudexTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -728,6 +804,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2X2PW54287;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -740,7 +817,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.Nudex;
 				PRODUCT_NAME = Nudex;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -755,6 +832,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2X2PW54287;
 				INFOPLIST_FILE = Nudex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -762,7 +840,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.Nudex;
 				PRODUCT_NAME = Nudex;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

@@ -13,7 +13,7 @@ import Post from './components/Post';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgb(236, 236, 236)',
+    backgroundColor: 'rgb(7, 7, 7)',
   },
 });
 
@@ -54,7 +54,7 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar />
+      <StatusBar translucent />
       <FlatList
         data={posts}
         refreshControl={
