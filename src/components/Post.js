@@ -27,6 +27,24 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  upvotesContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  upvotes: {
+    color: 'rgb(87, 88, 90)',
+    fontSize: 16,
+  },
+  shareButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  shareButtonText: {
+    color: 'rgb(87, 88, 90)',
+  },
 });
 
 const kFormatter = (num) => {
@@ -48,11 +66,9 @@ const Post = ({data: post}) => {
         )}
 
         <View style={styles.bottomActionBar}>
-          <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
+          <View style={styles.upvotesContainer}>
             <EntypoIcon name="arrow-up" size={20} color="rgb(87, 88, 90)" />
-            <Text style={{color: 'rgb(87, 88, 90)', fontSize: 16}}>
-              {kFormatter(post.ups)}
-            </Text>
+            <Text style={styles.upvotes}>{kFormatter(post.ups)}</Text>
           </View>
 
           <TouchableWithoutFeedback
@@ -64,15 +80,9 @@ const Post = ({data: post}) => {
                   : post.url,
               }).catch((e) => console.log(e));
             }}>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'flex-end',
-              }}>
+            <View style={styles.shareButton}>
               <FeatherIcon name="share" size={18} color="rgb(87, 88, 90)" />
-              <Text style={{color: 'rgb(87, 88, 90)'}}> Share</Text>
+              <Text style={styles.shareButtonText}> Share</Text>
             </View>
           </TouchableWithoutFeedback>
 
