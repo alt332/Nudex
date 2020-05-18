@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import {Dimensions} from 'react-native';
 
@@ -10,6 +10,7 @@ const ImageView = ({post}) => {
   const imageExtension = post.url.split('.').pop();
   let imageUri =
     imageExtension == 'gif' ||
+    imageExtension == 'png' ||
     imageExtension == 'jpg' ||
     imageExtension == 'jpeg'
       ? post.url

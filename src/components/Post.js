@@ -41,7 +41,7 @@ const Post = ({data: post}) => {
       <View style={styles.container}>
         <Text style={styles.postTitle}>{post.title}</Text>
 
-        {post.preview.reddit_video_preview ? (
+        {post.secure_media ? (
           <VideoView post={post} />
         ) : (
           <ImageView post={post} />
@@ -60,7 +60,7 @@ const Post = ({data: post}) => {
               Share.open({
                 title: post.title,
                 url: post.secure_media
-                  ? post.secure_media.oembed.thumbnail_url
+                  ? post.preview.reddit_video_preview.fallback_url
                   : post.url,
               }).catch((e) => console.log(e));
             }}>
