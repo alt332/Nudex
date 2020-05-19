@@ -56,6 +56,7 @@ const App = () => {
     <SafeAreaView style={styles.container}>
       <StatusBar translucent />
       <FlatList
+        pinchGestureEnabled={false}
         data={posts}
         refreshControl={
           <RefreshControl refreshing={loading} onRefresh={() => getPosts()} />
