@@ -10,7 +10,6 @@ import {
 
 const screenWidth = Dimensions.get('window').width;
 
-// TODO: Fix zIndex problem (won't go over the component below)
 const ImageView = ({post}) => {
   const imageExtension = post.url.split('.').pop();
   let imageUri =
@@ -23,7 +22,6 @@ const ImageView = ({post}) => {
 
   const translation = new Animated.ValueXY({x: 0, y: 0});
   const scale = new Animated.Value(1);
-  const zIndex = new Animated.Value(1);
   const imagePan = React.createRef();
   const imagePinch = React.createRef();
 
@@ -55,16 +53,14 @@ const ImageView = ({post}) => {
   const _onPanGestureStateChange = ({nativeEvent}) => {
     switch (nativeEvent) {
       case State.BEGAN:
-        zIndex.setValue(100);
         translation.setValue({
           x: nativeEvent.translationX,
           y: nativeEvent.translationY,
         });
         break;
       default:
-        Animated.timing(translation, {
+        Animated.spring(translation, {
           toValue: {x: 0, y: 0},
-          duration: 300,
           useNativeDriver: true,
         }).start();
     }
@@ -74,13 +70,10 @@ const ImageView = ({post}) => {
     switch (nativeEvent) {
       case State.BEGAN:
         scale.setValue(nativeEvent.scale);
-        zIndex.setValue(100);
         break;
       default:
-        zIndex.setValue(1);
-        Animated.timing(scale, {
+        Animated.spring(scale, {
           toValue: 1,
-          duration: 300,
           useNativeDriver: true,
         }).start();
     }
@@ -93,14 +86,7 @@ const ImageView = ({post}) => {
       minPointers={2}
       onGestureEvent={handlePanGesture}
       onHandlerStateChange={_onPanGestureStateChange}>
-      <Animated.View
-        style={{
-          width: screenWidth,
-          height:
-            post.preview.images[0].source.height /
-            (post.preview.images[0].source.width / screenWidth),
-          zIndex,
-        }}>
+      <Animated.View>
         <PinchGestureHandler
           ref={imagePinch}
           simultaneousHandlers={imagePan}

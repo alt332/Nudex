@@ -12,13 +12,16 @@ import VideoView from './VideoView';
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'rgb(19, 19, 21)',
+    overflow: 'hidden',
   },
   postTitle: {
+    backgroundColor: 'rgb(19, 19, 21)',
     paddingHorizontal: 20,
     fontSize: 18,
     fontWeight: 'bold',
     color: 'rgb(214, 214, 216)',
-    marginVertical: 10,
+    paddingVertical: 10,
+    zIndex: 2,
   },
   bottomActionBar: {
     flexDirection: 'row',
@@ -26,6 +29,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     justifyContent: 'space-between',
     alignItems: 'center',
+    backgroundColor: 'rgb(19, 19, 21)',
   },
   upvotesContainer: {
     flex: 1,
