@@ -1,24 +1,16 @@
 import React from 'react';
 
-import {Dimensions} from 'react-native';
+import {Dimensions, Animated} from 'react-native';
 
-import Animated, {
-  Value,
-  useCode,
-  block,
-  cond,
-  eq,
-} from 'react-native-reanimated';
-import {PinchGestureHandler, State} from 'react-native-gesture-handler';
 import {
-  onGestureEvent,
-  vec,
-  transformOrigin,
-  timing,
-} from 'react-native-redash';
+  PanGestureHandler,
+  PinchGestureHandler,
+  State,
+} from 'react-native-gesture-handler';
 
 const screenWidth = Dimensions.get('window').width;
 
+// TODO: Fix zIndex problem (won't go over the component below)
 const ImageView = ({post}) => {
   const imageExtension = post.url.split('.').pop();
   let imageUri =
@@ -29,34 +21,75 @@ const ImageView = ({post}) => {
       ? post.url
       : post.thumbnail;
 
-  const state = new Value(State.UNDETERMINED);
-  const gestureScale = new Value(1);
-  const focal = vec.createValue(0, 0);
-  const origin = vec.createValue(0, 0);
-  const gestureHandler = onGestureEvent({
-    state,
-    scale: gestureScale,
-    focalX: focal.x,
-    focalY: focal.y,
-  });
-  const adjustedFocal = vec.add(
-    {x: -screenWidth / 2, y: -screenWidth / 2},
-    focal,
-  );
-  const zIndex = cond(eq(state, State.ACTIVE), 3, 0);
-  const scale = cond(
-    eq(state, State.END),
-    timing({from: gestureScale, to: 1}),
-    gestureScale,
+  const translation = new Animated.ValueXY({x: 0, y: 0});
+  const scale = new Animated.Value(1);
+  const zIndex = new Animated.Value(1);
+  const imageRef = React.createRef();
+
+  const handlePanGesture = Animated.event(
+    [
+      {
+        nativeEvent: {
+          translationX: translation.x,
+          translationY: translation.y,
+        },
+      },
+    ],
+    {useNativeDriver: true},
   );
 
-  useCode(
-    () => block([cond(eq(state, State.BEGAN), vec.set(origin, adjustedFocal))]),
-    [focal, origin, state],
+  const handlePinchGesture = Animated.event(
+    [
+      {
+        nativeEvent: {
+          scale,
+        },
+      },
+    ],
+    {
+      useNativeDriver: true,
+    },
   );
+
+  const _onPanGestureStateChange = ({nativeEvent}) => {
+    switch (nativeEvent) {
+      case State.BEGAN:
+        translation.setValue({
+          x: nativeEvent.translationX,
+          y: nativeEvent.translationY,
+        });
+        break;
+      default:
+        Animated.timing(translation, {
+          toValue: {x: 0, y: 0},
+          duration: 300,
+          useNativeDriver: true,
+        }).start();
+    }
+  };
+
+  const _onPinchGestureStateChange = ({nativeEvent}) => {
+    switch (nativeEvent) {
+      case State.BEGAN:
+        scale.setValue(nativeEvent.scale);
+        zIndex.setValue(3);
+        break;
+      default:
+        zIndex.setValue(1);
+        Animated.timing(scale, {
+          toValue: 1,
+          duration: 300,
+          useNativeDriver: true,
+        }).start();
+    }
+  };
 
   return (
-    <PinchGestureHandler {...gestureHandler}>
+    <PanGestureHandler
+      ref={imageRef}
+      minPointers={2}
+      onGestureEvent={handlePanGesture}
+      onHandlerStateChange={_onPanGestureStateChange}>
       <Animated.View
         style={{
           width: screenWidth,
@@ -65,19 +98,28 @@ const ImageView = ({post}) => {
             (post.preview.images[0].source.width / screenWidth),
           zIndex,
         }}>
-        <Animated.Image
-          style={{
-            width: screenWidth,
-            height:
-              post.preview.images[0].source.height /
-              (post.preview.images[0].source.width / screenWidth),
-            resizeMode: 'cover',
-            transform: [...transformOrigin(origin, {scale})],
-          }}
-          source={{uri: imageUri}}
-        />
+        <PinchGestureHandler
+          simultaneousHandlers={imageRef}
+          onGestureEvent={handlePinchGesture}
+          onHandlerStateChange={_onPinchGestureStateChange}>
+          <Animated.Image
+            style={{
+              width: screenWidth,
+              height:
+                post.preview.images[0].source.height /
+                (post.preview.images[0].source.width / screenWidth),
+              resizeMode: 'cover',
+              transform: [
+                {scale},
+                {translateX: translation.x},
+                {translateY: translation.y},
+              ],
+            }}
+            source={{uri: imageUri}}
+          />
+        </PinchGestureHandler>
       </Animated.View>
-    </PinchGestureHandler>
+    </PanGestureHandler>
   );
 };
 
