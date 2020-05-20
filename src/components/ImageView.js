@@ -24,7 +24,8 @@ const ImageView = ({post}) => {
   const translation = new Animated.ValueXY({x: 0, y: 0});
   const scale = new Animated.Value(1);
   const zIndex = new Animated.Value(1);
-  const imageRef = React.createRef();
+  const imagePan = React.createRef();
+  const imagePinch = React.createRef();
 
   const handlePanGesture = Animated.event(
     [
@@ -54,6 +55,7 @@ const ImageView = ({post}) => {
   const _onPanGestureStateChange = ({nativeEvent}) => {
     switch (nativeEvent) {
       case State.BEGAN:
+        zIndex.setValue(100);
         translation.setValue({
           x: nativeEvent.translationX,
           y: nativeEvent.translationY,
@@ -72,7 +74,7 @@ const ImageView = ({post}) => {
     switch (nativeEvent) {
       case State.BEGAN:
         scale.setValue(nativeEvent.scale);
-        zIndex.setValue(3);
+        zIndex.setValue(100);
         break;
       default:
         zIndex.setValue(1);
@@ -86,7 +88,8 @@ const ImageView = ({post}) => {
 
   return (
     <PanGestureHandler
-      ref={imageRef}
+      ref={imagePan}
+      simultaneousHandlers={imagePinch}
       minPointers={2}
       onGestureEvent={handlePanGesture}
       onHandlerStateChange={_onPanGestureStateChange}>
@@ -99,7 +102,8 @@ const ImageView = ({post}) => {
           zIndex,
         }}>
         <PinchGestureHandler
-          simultaneousHandlers={imageRef}
+          ref={imagePinch}
+          simultaneousHandlers={imagePan}
           onGestureEvent={handlePinchGesture}
           onHandlerStateChange={_onPinchGestureStateChange}>
           <Animated.Image
