@@ -78,6 +78,27 @@ const validPost = (post) => {
   return false;
 };
 
+// const type = (post) => {
+//   const extension = post.url.split('.').pop();
+
+//   if (post.preview) {
+//     if (post.preview.reddit_video_preview) {
+//       return 'video';
+//     } else {
+//       return extension == 'gif' ||
+//         extension == 'png' ||
+//         extension == 'jpg' ||
+//         extension == 'jpeg'
+//         ? 'image'
+//         : 'unknown';
+//     }
+//   } else {
+//     return extension == 'mp4' ? 'video' : 'unknown';
+//   }
+
+//   return 'unknown';
+// };
+
 const Post = ({data: post}) =>
   validPost(post) ? (
     <View style={styles.container}>
@@ -110,17 +131,6 @@ const Post = ({data: post}) =>
             <Text style={styles.shareButtonText}> Share</Text>
           </View>
         </TouchableWithoutFeedback>
-
-        {/* <View style={{flex: 1, alignItems: 'flex-end'}}>
-              <TouchableWithoutFeedback
-                onPress={() => console.log('handle favourite function')}>
-                <FontAwesomeIcon
-                  name="bookmark"
-                  color="rgb(138, 138, 138)"
-                  size={18}
-                />
-              </TouchableWithoutFeedback>
-            </View> */}
       </View>
     </View>
   ) : null;
