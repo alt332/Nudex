@@ -812,6 +812,7 @@
 				);
 				INFOPLIST_FILE = Nudex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 0.0.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -835,6 +836,7 @@
 				DEVELOPMENT_TEAM = 2X2PW54287;
 				INFOPLIST_FILE = Nudex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 0.0.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

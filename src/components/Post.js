@@ -57,40 +57,61 @@ const kFormatter = (num) => {
     : Math.sign(num) * Math.abs(num);
 };
 
-const Post = ({data: post}) => {
+const validPost = (post) => {
+  const extension = post.url.split('.').pop();
+
   if (post.preview) {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.postTitle}>{post.title}</Text>
+    if (post.preview.reddit_video_preview) {
+      return true;
+    } else {
+      return (
+        extension == 'gif' ||
+        extension == 'png' ||
+        extension == 'jpg' ||
+        extension == 'jpeg'
+      );
+    }
+  } else {
+    return extension == 'mp4';
+  }
 
-        {post.secure_media ? (
-          <VideoView post={post} />
-        ) : (
-          <ImageView post={post} />
-        )}
+  return false;
+};
 
-        <View style={styles.bottomActionBar}>
-          <View style={styles.upvotesContainer}>
-            <EntypoIcon name="arrow-up" size={20} color="rgb(87, 88, 90)" />
-            <Text style={styles.upvotes}>{kFormatter(post.ups)}</Text>
+const Post = ({data: post}) =>
+  validPost(post) ? (
+    <View style={styles.container}>
+      <Text style={styles.postTitle}>{post.title}</Text>
+
+      {(post.preview && post.preview.reddit_video_preview) ||
+      post.url.split('.').pop() == 'mp4' ? (
+        <VideoView post={post} />
+      ) : (
+        <ImageView post={post} />
+      )}
+
+      <View style={styles.bottomActionBar}>
+        <View style={styles.upvotesContainer}>
+          <EntypoIcon name="arrow-up" size={20} color="rgb(87, 88, 90)" />
+          <Text style={styles.upvotes}>{kFormatter(post.ups)}</Text>
+        </View>
+
+        <TouchableWithoutFeedback
+          onPress={() => {
+            Share.open({
+              title: post.title,
+              url: post.secure_media
+                ? post.preview.reddit_video_preview.fallback_url
+                : post.url,
+            }).catch((e) => console.log(e));
+          }}>
+          <View style={styles.shareButton}>
+            <FeatherIcon name="share" size={18} color="rgb(87, 88, 90)" />
+            <Text style={styles.shareButtonText}> Share</Text>
           </View>
+        </TouchableWithoutFeedback>
 
-          <TouchableWithoutFeedback
-            onPress={() => {
-              Share.open({
-                title: post.title,
-                url: post.secure_media
-                  ? post.preview.reddit_video_preview.fallback_url
-                  : post.url,
-              }).catch((e) => console.log(e));
-            }}>
-            <View style={styles.shareButton}>
-              <FeatherIcon name="share" size={18} color="rgb(87, 88, 90)" />
-              <Text style={styles.shareButtonText}> Share</Text>
-            </View>
-          </TouchableWithoutFeedback>
-
-          {/* <View style={{flex: 1, alignItems: 'flex-end'}}>
+        {/* <View style={{flex: 1, alignItems: 'flex-end'}}>
               <TouchableWithoutFeedback
                 onPress={() => console.log('handle favourite function')}>
                 <FontAwesomeIcon
@@ -100,12 +121,8 @@ const Post = ({data: post}) => {
                 />
               </TouchableWithoutFeedback>
             </View> */}
-        </View>
       </View>
-    );
-  }
-
-  return null;
-};
+    </View>
+  ) : null;
 
 export default React.memo(Post);

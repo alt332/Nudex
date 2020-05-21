@@ -29,7 +29,7 @@ const App = () => {
 
     try {
       const response = await fetch(
-        `https://reddit.com/r/nsfw.json?after=${after}`,
+        `https://reddit.com/r/shelikesitrough/hot.json?after=${after}`,
       );
 
       if (response.status == 200) {
@@ -54,9 +54,10 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar translucent />
+      <StatusBar translucent barStyle="default" />
       <FlatList
         pinchGestureEnabled={false}
+        showsVerticalScrollIndicator={false}
         data={posts}
         refreshControl={
           <RefreshControl refreshing={loading} onRefresh={() => getPosts()} />
@@ -66,8 +67,8 @@ const App = () => {
         ItemSeparatorComponent={() => (
           <View style={{height: 10, backgroundColor: 'rgb(236, 236, 236'}} />
         )}
-        onEndReachedThreshold={10}
-        onEndReached={() => getPosts(afterCode)}
+        onEndReachedThreshold={0.2}
+        onEndReached={() => afterCode && getPosts(afterCode)}
       />
     </SafeAreaView>
   );
