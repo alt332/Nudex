@@ -58,7 +58,7 @@ const HomeScreen = ({navigation}) => {
         <ScrollView style={{flex: 1}}>
           {sources.map((source, index) => (
             <TouchableOpacity
-              kye={index}
+              key={index}
               onPress={() =>
                 navigation.navigate('List', {
                   ...source,

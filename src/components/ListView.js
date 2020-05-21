@@ -51,6 +51,8 @@ const ListView = ({keyword, type}) => {
       <FlatList
         pinchGestureEnabled={false}
         showsVerticalScrollIndicator={false}
+        initialNumToRender={3}
+        windowSize={3}
         data={posts}
         refreshControl={
           <RefreshControl refreshing={loading} onRefresh={() => getPosts()} />
@@ -60,7 +62,7 @@ const ListView = ({keyword, type}) => {
         ItemSeparatorComponent={() => (
           <View style={{height: 20, backgroundColor: 'rgb(20, 23, 28)'}} />
         )}
-        onEndReachedThreshold={0.2}
+        onEndReachedThreshold={0.5}
         onEndReached={() => afterCode && getPosts(afterCode)}
       />
     </View>
