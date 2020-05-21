@@ -11,11 +11,11 @@ import VideoView from './VideoView';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'rgb(19, 19, 21)',
+    backgroundColor: 'rgb(53, 54, 64)',
     overflow: 'hidden',
   },
   postTitle: {
-    backgroundColor: 'rgb(19, 19, 21)',
+    backgroundColor: 'rgb(53, 54, 64)',
     paddingHorizontal: 20,
     fontSize: 18,
     fontWeight: 'bold',
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'rgb(19, 19, 21)',
+    backgroundColor: 'rgb(53, 54, 64)',
   },
   upvotesContainer: {
     flex: 1,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   upvotes: {
-    color: 'rgb(87, 88, 90)',
+    color: 'rgb(214, 214, 216)',
     fontSize: 16,
   },
   shareButton: {
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   shareButtonText: {
-    color: 'rgb(87, 88, 90)',
+    color: 'rgb(214, 214, 216)',
   },
 });
 
@@ -92,7 +92,7 @@ const Post = ({data: post}) =>
 
       <View style={styles.bottomActionBar}>
         <View style={styles.upvotesContainer}>
-          <EntypoIcon name="arrow-up" size={20} color="rgb(87, 88, 90)" />
+          <EntypoIcon name="arrow-up" size={20} color="rgb(214, 214, 216)" />
           <Text style={styles.upvotes}>{kFormatter(post.ups)}</Text>
         </View>
 
@@ -106,7 +106,7 @@ const Post = ({data: post}) =>
             }).catch((e) => console.log(e));
           }}>
           <View style={styles.shareButton}>
-            <FeatherIcon name="share" size={18} color="rgb(87, 88, 90)" />
+            <FeatherIcon name="share" size={18} color="rgb(214, 214, 216)" />
             <Text style={styles.shareButtonText}> Share</Text>
           </View>
         </TouchableWithoutFeedback>

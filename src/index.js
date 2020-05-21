@@ -1,77 +1,38 @@
-import React, {useEffect, useState} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  StatusBar,
-  FlatList,
-  RefreshControl,
-} from 'react-native';
+import React from 'react';
 
-import Post from './components/Post';
+import {SafeAreaView, StatusBar} from 'react-native';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'rgb(7, 7, 7)',
-  },
-});
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-const App = () => {
-  const [posts, setPosts] = useState([]);
-  const [afterCode, setAfterCode] = useState('');
-  const [loading, setLoading] = useState(true);
+import HomeScreen from './screens/HomeScreen';
+import ListScreen from './screens/ListScreen';
 
-  const getPosts = async (after = '') => {
-    if (!after) {
-      setLoading(true);
-    }
+const Stack = createStackNavigator();
 
-    try {
-      const response = await fetch(
-        `https://reddit.com/r/shelikesitrough/hot.json?after=${after}`,
-      );
-
-      if (response.status == 200) {
-        const responseData = await response.json();
-
-        setAfterCode(responseData.data.after);
-        if (!after) {
-          setPosts(responseData.data.children);
-        } else {
-          setPosts([...posts, ...responseData.data.children]);
-        }
-      }
-    } catch (e) {
-      console.log(e);
-    }
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    getPosts();
-  }, []);
-
-  return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar translucent barStyle="default" />
-      <FlatList
-        pinchGestureEnabled={false}
-        showsVerticalScrollIndicator={false}
-        data={posts}
-        refreshControl={
-          <RefreshControl refreshing={loading} onRefresh={() => getPosts()} />
-        }
-        keyExtractor={({data}) => data.id}
-        renderItem={({item}) => <Post data={item.data} />}
-        ItemSeparatorComponent={() => (
-          <View style={{height: 10, backgroundColor: 'rgb(236, 236, 236'}} />
-        )}
-        onEndReachedThreshold={0.2}
-        onEndReached={() => afterCode && getPosts(afterCode)}
-      />
-    </SafeAreaView>
-  );
-};
+const App = () => (
+  <SafeAreaView style={{flex: 1, backgroundColor: 'rgb(20, 23, 28)'}}>
+    <StatusBar translucent barStyle="default" />
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerBackTitle: 'back',
+          headerTintColor: 'rgb(214, 214, 216)',
+          headerStyle: {
+            backgroundColor: 'rgb(20, 23, 28)',
+            shadowColor: 'transparent',
+          },
+        }}>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen
+          name="List"
+          component={ListScreen}
+          options={({route}) => ({title: route.params.name})}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  </SafeAreaView>
+);
 
 export default App;
