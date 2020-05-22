@@ -39,6 +39,7 @@ const ListScreen = ({route}) => {
         imageIndex={0}
         visible={showImageModal}
         onRequestClose={() => setShowImageModal(false)}
+        presentationStyle="overFullScreen"
       />
 
       <TabView

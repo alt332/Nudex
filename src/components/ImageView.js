@@ -4,8 +4,11 @@ import {
   StyleSheet,
   Dimensions,
   View,
+  Text,
   TouchableWithoutFeedback,
   Image,
+  Platform,
+  ActivityIndicator,
 } from 'react-native';
 
 import {AllHtmlEntities} from 'html-entities';
@@ -14,6 +17,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
+  },
+  loadingIndicator: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+  },
+  loadingProgress: {
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
@@ -64,14 +80,39 @@ const ImageView = ({post, setShowImageModal, setModalImageUri}) => {
 
   return (
     <View style={styles.container}>
+      {progress !== 100 &&
+        (Platform.OS == 'android' ? (
+          <ActivityIndicator
+            color="rgb(214, 214, 216)"
+            style={styles.loadingIndicator}
+          />
+        ) : (
+          <View
+            style={[
+              {
+                width: screenWidth,
+                height: calculateImageHeight(),
+              },
+              styles.loadingProgress,
+            ]}>
+            <Text style={{color: 'rgb(214, 214, 216)'}}>{progress}%</Text>
+          </View>
+        ))}
+
       <TouchableWithoutFeedback
         onPress={() => {
           setModalImageUri(fullResolutionUri);
           setShowImageModal(true);
         }}>
         <Image
+          progressiveRenderingEnabled={true}
           onProgress={({nativeEvent: {loaded, total}}) => {
             setProgress(Math.round((loaded * 100) / total));
+          }}
+          onLoadEnd={() => {
+            if (Platform.OS == 'android') {
+              setProgress(100);
+            }
           }}
           style={{
             opacity: progress < 100 ? 0 : 1,
@@ -79,11 +120,13 @@ const ImageView = ({post, setShowImageModal, setModalImageUri}) => {
             height: calculateImageHeight(),
             resizeMode: 'cover',
           }}
-          source={{uri: imageUri}}
+          source={{
+            uri: imageUri,
+          }}
         />
       </TouchableWithoutFeedback>
     </View>
   );
 };
 
-export default React.memo(ImageView);
+export default ImageView;

@@ -28,7 +28,9 @@ export const App = () => (
         <Stack.Screen
           name="List"
           component={ListScreen}
-          options={({route}) => ({title: route.params.name})}
+          options={({route}) => ({
+            title: route.params.name,
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>
