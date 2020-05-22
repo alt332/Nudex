@@ -10,7 +10,7 @@ import ListScreen from './screens/ListScreen';
 
 const Stack = createStackNavigator();
 
-const App = () => (
+export const App = () => (
   <SafeAreaView style={{flex: 1, backgroundColor: 'rgb(20, 23, 28)'}}>
     <StatusBar translucent barStyle="default" />
     <NavigationContainer>
@@ -34,5 +34,3 @@ const App = () => (
     </NavigationContainer>
   </SafeAreaView>
 );
-
-export default App;

@@ -99,7 +99,7 @@ const validPost = (post) => {
 //   return 'unknown';
 // };
 
-const Post = ({data: post}) =>
+const Post = ({data: post, setShowImageModal, setModalImageUri}) =>
   validPost(post) ? (
     <View style={styles.container}>
       <Text style={styles.postTitle}>{post.title}</Text>
@@ -108,7 +108,11 @@ const Post = ({data: post}) =>
       post.url.split('.').pop() == 'mp4' ? (
         <VideoView post={post} />
       ) : (
-        <ImageView post={post} />
+        <ImageView
+          post={post}
+          setShowImageModal={setShowImageModal}
+          setModalImageUri={setModalImageUri}
+        />
       )}
 
       <View style={styles.bottomActionBar}>

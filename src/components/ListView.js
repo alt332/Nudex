@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ListView = ({keyword, type}) => {
+const ListView = ({keyword, type, setShowImageModal, setModalImageUri}) => {
   const [posts, setPosts] = useState([]);
   const [afterCode, setAfterCode] = useState('');
   const [loading, setLoading] = useState(true);
@@ -58,7 +58,13 @@ const ListView = ({keyword, type}) => {
           <RefreshControl refreshing={loading} onRefresh={() => getPosts()} />
         }
         keyExtractor={({data}) => data.id}
-        renderItem={({item}) => <Post data={item.data} />}
+        renderItem={({item}) => (
+          <Post
+            data={item.data}
+            setShowImageModal={setShowImageModal}
+            setModalImageUri={setModalImageUri}
+          />
+        )}
         ItemSeparatorComponent={() => (
           <View style={{height: 20, backgroundColor: 'rgb(20, 23, 28)'}} />
         )}
