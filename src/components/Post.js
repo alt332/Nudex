@@ -61,18 +61,20 @@ const validPost = (post) => {
   const extension = post.url.split('.').pop();
 
   if (post.preview) {
-    if (post.preview.reddit_video_preview) {
+    if (
+      post.preview.images[0].variants.mp4 ||
+      post.preview.reddit_video_preview
+    ) {
       return true;
     } else {
       return (
         extension == 'gif' ||
+        extension == 'gifv' ||
         extension == 'png' ||
         extension == 'jpg' ||
         extension == 'jpeg'
       );
     }
-  } else {
-    return extension == 'mp4';
   }
 
   return false;
@@ -104,8 +106,9 @@ const Post = ({data: post, setShowImageModal, setModalImageUri}) =>
     <View style={styles.container}>
       <Text style={styles.postTitle}>{post.title}</Text>
 
-      {(post.preview && post.preview.reddit_video_preview) ||
-      post.url.split('.').pop() == 'mp4' ? (
+      {post.preview &&
+      (post.preview.images[0].variants.mp4 ||
+        post.preview.reddit_video_preview) ? (
         <VideoView post={post} />
       ) : (
         <ImageView

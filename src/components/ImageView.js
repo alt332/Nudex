@@ -43,23 +43,27 @@ const ImageView = ({post, setShowImageModal, setModalImageUri}) => {
   const [progress, setProgress] = useState(0);
   const imageExtension = post.url.split('.').pop();
 
-  if (
-    imageExtension == 'gif' ||
-    imageExtension == 'png' ||
-    imageExtension == 'jpg' ||
-    imageExtension == 'jpeg'
-  ) {
-    imageUri = entities.decode(
-      post.preview.images[0].resolutions.slice(-1)[0].url,
-    );
-    imageWidth = post.preview.images[0].resolutions.slice(-1)[0].width;
-    imageHeight = post.preview.images[0].resolutions.slice(-1)[0].height;
-    fullResolutionUri = post.url;
+  if (post.preview) {
+    if (imageExtension == 'gif' || imageExtension == 'gifv') {
+      imageUri = entities.decode(
+        post.preview.images[0].variants.gif.resolutions.slice(-1)[0].url,
+      );
+      imageWidth = post.preview.images[0].resolutions.slice(-1)[0].width;
+      imageHeight = post.preview.images[0].resolutions.slice(-1)[0].height;
+      fullResolutionUri = imageUri;
+    } else {
+      imageUri = entities.decode(
+        post.preview.images[0].resolutions.slice(-1)[0].url,
+      );
+      imageWidth = screenWidth;
+      imageHeight = screenHeight * 0.7;
+      fullResolutionUri = post.url;
+    }
   } else {
     imageUri = post.thumbnail;
     imageWidth = screenWidth;
-    imageHeight = screenWidth * 0.7;
-    fullResolutionUri = post.thumbnail;
+    imageHeight = screenHeight * 0.7;
+    fullResolutionUri = post.url;
   }
 
   const calculateImageWidth = () =>

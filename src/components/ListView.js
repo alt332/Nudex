@@ -18,6 +18,7 @@ const ListView = ({keyword, type, setShowImageModal, setModalImageUri}) => {
 
   const getPosts = async (after = '') => {
     if (!after) {
+      setPosts([]);
       setLoading(true);
     }
 
