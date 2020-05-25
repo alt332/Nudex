@@ -38,7 +38,9 @@ const VideoView = ({post}) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
               </head>
               <body>
-                <video width="100%" height="100%" poster="${post.thumbnail}" controls>
+                <video width="100%" height="100%" poster="${
+                  post.preview.images[0].resolutions.slice(-1)[0].url
+                }" controls>
                   <source src="${uri}" />
                   Sorry, can't play the media.
                 </video>
@@ -56,7 +58,8 @@ const VideoView = ({post}) => {
       id={post.id}
       source={{uri}}
       controls
-      poster={post.thumbnail}
+      poster={post.preview.images[0].resolutions.slice(-1)[0].url}
+      repeat={true}
       paused={true}
       style={{
         width: screenWidth,
