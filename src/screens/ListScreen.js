@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 
-import {Dimensions, View} from 'react-native';
+import {Dimensions, View, Modal} from 'react-native';
 
-import ImageView from 'react-native-image-viewing';
+import ImageViewer from 'react-native-image-zoom-viewer';
 import {TabView, TabBar} from 'react-native-tab-view';
 
 import ListView from '../components/ListView';
@@ -34,13 +34,18 @@ const ListScreen = ({route}) => {
 
   return (
     <>
-      <ImageView
-        images={[{uri: modalImageUri}]}
-        imageIndex={0}
+      <Modal
         visible={showImageModal}
-        onRequestClose={() => setShowImageModal(false)}
-        presentationStyle="overFullScreen"
-      />
+        transparent={true}
+        onRequestClose={() => setShowImageModal(false)}>
+        <ImageViewer
+          maxOverflow={0}
+          imageUrls={modalImageUri}
+          renderIndicator={() => null}
+          enableSwipeDown={true}
+          onCancel={() => setShowImageModal(false)}
+        />
+      </Modal>
 
       <TabView
         navigationState={{index, routes}}
