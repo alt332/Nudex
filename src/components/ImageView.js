@@ -106,7 +106,7 @@ const ImageView = ({post, setShowImageModal, setModalImageUri}) => {
       <TouchableWithoutFeedback
         onPress={() => {
           setModalImageUri([
-            {url: fullResolutionUri, width: imageWidth, height: imageHeight},
+            {url: fullResolutionUri},
           ]);
           setShowImageModal(true);
         }}>

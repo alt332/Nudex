@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {Dimensions, View, Modal} from 'react-native';
+import {Dimensions, View, Modal, ActivityIndicator} from 'react-native';
 
 import ImageViewer from 'react-native-image-zoom-viewer';
 import {TabView, TabBar} from 'react-native-tab-view';
@@ -43,6 +43,7 @@ const ListScreen = ({route}) => {
           imageUrls={modalImageUri}
           renderIndicator={() => null}
           enableSwipeDown={true}
+          loadingRender={() => <ActivityIndicator />}
           onCancel={() => setShowImageModal(false)}
         />
       </Modal>
